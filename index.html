@@ -78,12 +78,13 @@
         }
         //Главная функция сайта
         function main() {
-            count ++;
+            count++;
             clickCounter.textContent = count;
             localStorage.setItem("count", count);
             const sparkCount = 12; // Количество частиц
-        function update() {
-            clickCounter.textContent = count;
+            function update() {
+                clickCounter.textContent = count;
+            }
         }
     </script>
 </body>
