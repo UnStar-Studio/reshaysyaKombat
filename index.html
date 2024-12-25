@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кликер</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg"></div>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#" onclick=infoActiv() class="f">О нас</a></li>
+                <li><a href="#" onclick=gameActiv() class="f">Игра</a></li>
+                <li><a href="#" onclick=promoActiv() class="f">Промокоды</a></li>
+            </ul>
+        </nav>
+        <h1 class="logo">РЕШАЙся kombat</h1>
+    </header>
+
+    <main id="game">
+        <div id="click-counter">0</div>
+        <img id="click-image" src="btn.png" alt="Кликни меня!" onclick=main()>
+    </main>
+    <main id="info">
+        <p class="s">
+            «РЕШАЙся» — образовательный проект ГБОУ Школа №1542 для учеников, учителей и родителей. Подписывайся и решайся быть в команде профессионалов вместе с нами!
+            YouTube: https://www.youtube.com/@reshaysya
+            Email для связи : emelyanovaa@sch1542.r
+        </p>
+        <p class="s">
+            «РЕШАЙся combot» - проект ГБОУ Школа №1542 для проведения конкурсов,мероприятий и различных событий.
+        </p>
+    </main>
+    <main id="promo">
+        <p class="s">
+            Введите промокод
+        </p>
+        <div name="promoModule">
+            <input type="text" placeholder="Промокод:" id="promoInput" />
+            <button id="promoBtn" onclick=checkPromo()>Ввести</button>
+        </div>
+        <p id="promoStatus">Невалидный промокод</p>
+    </main>
+    <script>
+        //Ссылки на элементы сайта
+        var game = document.getElementById("game");
+        var info = document.getElementById("info");
+        var promo = document.getElementById("promo");
+
+        const clickCounter = document.getElementById('click-counter');
+        const clickButton = document.getElementById('click-button');
+
+        var promoInput = document.getElementById("promoInput");
+        var promoStatus = document.getElementById("promoStatus");
+        //Переменные сайта
+        let count = localStorage.getItem("count");
+        clickCounter.textContent = count;
+
+        var promoUsed = localStorage.getItem("bool");
+
+        //Начальное состояние элементов сайта
+        gameActiv()
+
+        promoStatus.innerText = "";
+        setInterval(update, 5);
+        //Функции сайта
+        //Промокоды
+        function checkPromo() {
+            if (promoInput.value == "WTF1542UTF8" && promoUsed == false) {
+                count += 5000;
+                clickCounter.textContent = count;
+                localStorage.setItem("count", count);
+                promoUsed = true
+                localStorage.setItem("bool", promoUsed);
+            }
+        }
+        //Функции управления вкладками сайта
+        function gameActiv() {
+            game.style.display = "block";
+            info.style.display = "none";
+            promo.style.display = "none";
+        }
+        function infoActiv() {
+            game.style.display = "none";
+            promo.style.display = "none";
+            info.style.display = "block";
+        }
+        function promoActiv() {
+            game.style.display = "none";
+            promo.style.display = "block";
+            info.style.display = "none";
+        }
+        //Главная функция сайта
+        function main() {
+            count ++;
+            clickCounter.textContent = count;
+            localStorage.setItem("count", count);
+            const sparkCount = 12; // Количество частиц
+        function update() {
+            clickCounter.textContent = count;
+        }
+    </script>
+</body>
+</html>

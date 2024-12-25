@@ -1,0 +1,107 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    background-color: #d0f0c0; /* Светло-зеленый фон */
+    color: #336633; /* Темно-зеленый текст */
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #99cc99; /* Средне-зеленый */
+    padding: 10px 0; /* Уменьшенный отступ */
+    box-shadow: -5px 50px 50px #99cc99;
+}
+
+nav {
+    text-align: center; /* Центрирование навигации */
+}
+
+    nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: inline-block;
+    }
+
+    nav li {
+        display: inline;
+        margin: 0 10px;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #336633;
+        font-weight: bold;
+    }
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column; /* Выравнивание по вертикали */
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный белый */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.counter-box {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: #336633;
+}
+
+#click-counter {
+    font-weight: bold;
+    position: relative;
+    top: 0;
+    font-size: 100px;
+}
+
+#click-image {
+    width: 200px;
+    cursor: pointer;
+    border-radius: 1000px;
+    box-shadow: 0 8px #99cc99;
+    transition: all 0.2s ease;
+}
+    #click-image:active {
+        transform: translateY(8px);
+        box-shadow: 0 0 #99cc99;
+    }
+
+
+.upgrades {
+    margin-top: 20px;
+}
+
+
+footer {
+    background-color: #99cc99;
+    padding: 10px 0;
+    text-align: center;
+}
+.s {
+    font-weight: bold;
+    position: relative;
+    top: 0;
+    font-size: 20px;
+}
+.f {
+    transition: transform 0.3s ease;
+
+}
+    .f:hover {
+        text-decoration: underline;
+        transform: scale(1.2);
+        text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    }
+
