@@ -2,6 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Кликер</title>
     <link rel="stylesheet" href="style.css">
@@ -13,7 +14,7 @@
             <ul>
                 <li><a href="#" onclick=infoActiv() class="f">О нас</a></li>
                 <li><a href="#" onclick=gameActiv() class="f">Игра</a></li>
-                <li><a href="#" onclick=promoActiv() class="f">Промокоды</a></li>
+                <li><a href="#" class="f">Промокоды</a></li>
             </ul>
         </nav>
         <h1 class="logo">РЕШАЙся kombat</h1>
@@ -47,35 +48,18 @@
         //Ссылки на элементы сайта
         var game = document.getElementById("game");
         var info = document.getElementById("info");
-        var promo = document.getElementById("promo");
 
         const clickCounter = document.getElementById('click-counter');
         const clickButton = document.getElementById('click-button');
-
-        var promoInput = document.getElementById("promoInput");
-        var promoStatus = document.getElementById("promoStatus");
         //Переменные сайта
         let count = localStorage.getItem("count");
         clickCounter.textContent = count;
 
-        var promoUsed = localStorage.getItem("bool");
-
         //Начальное состояние элементов сайта
         gameActiv()
-
-        promoStatus.innerText = "";
         setInterval(update, 5);
         //Функции сайта
         //Промокоды
-        function checkPromo() {
-            if (promoInput.value == "WTF1542UTF8" && promoUsed == false) {
-                count += 5000;
-                clickCounter.textContent = count;
-                localStorage.setItem("count", count);
-                promoUsed = true
-                localStorage.setItem("bool", promoUsed);
-            }
-        }
         //Функции управления вкладками сайта
         function gameActiv() {
             game.style.display = "block";
