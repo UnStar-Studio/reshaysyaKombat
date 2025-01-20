@@ -4,7 +4,8 @@ var game = document.getElementById("game");
 const clickCounter = document.getElementById('click-counter');
 const clickButton = document.getElementById('click-button');
 //Переменные сайта
-let count = localStorage.getItem("count");
+let count = localStorage.removeItem("count");
+let count2 = localStorage.getItem("count2");
 clickCounter.textContent = count;
 
 //Начальное состояние элементов сайта
@@ -23,14 +24,14 @@ function promoActiv() {
 //Главная функция сайта
 function main() {
     if (current_click <= 3) {
-        count++;
-        clickCounter.textContent = count;
-        localStorage.setItem("count", count);
+        count2++;
+        clickCounter.textContent = count2;
+        localStorage.setItem("count2", count2);
         current_click++;
     }
 }
 function update() {
-    clickCounter.textContent = count;
+    clickCounter.textContent = count2;
 }
 function reset() {
     current_click = 0;
