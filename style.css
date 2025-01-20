@@ -1,111 +1,187 @@
 body {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
-    background-color: #d0f0c0; /* Светло-зеленый фон */
-    color: #336633; /* Темно-зеленый текст */
+    background: linear-gradient(to bottom, #a8e063, #d0f0c0); /* Градиентный фон */
+    color: #336633;
     text-align: center;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    overflow: hidden; /* Скрываем фон за пределами экрана */
 }
 
 header {
-    background-color: #99cc99; /* Средне-зеленый */
-    padding: 10px 0; /* Уменьшенный отступ */
-    box-shadow: -5px 50px 50px #99cc99;
+    background-color: #99cc99;
+    padding: 20px 0;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    position: relative; /* Для позиционирования элементов внутри header */
+    overflow: hidden; /* Скрываем фон за пределами header */
 }
 
-nav {
-    text-align: center; /* Центрирование навигации */
+    header::before { /* Псевдоэлемент для фона */
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("header-bg.jpg"); /* Путь к фоновому изображению */
+        background-size: cover; /* Заполняем всю область */
+        background-position: center; /* Центрируем изображение */
+        opacity: 0.3; /* Прозрачность фона */
+        z-index: -1; /* Помещаем фон за контент */
+        filter: blur(5px); /* Размытие фона */
+    }
+
+/* ... остальной CSS ... */
+header {
+    background: linear-gradient(135deg, #99cc99, #669966); /* Диагональный градиент */
+    padding: 30px 0; /* Больше отступов */
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3); /* Более темная тень */
+    display: flex; /* Flexbox для выравнивания */
+    flex-direction: column; /* Вертикальное расположение элементов */
+    align-items: center; /* Центрирование по горизонтали */
+    text-align: center; /* Центрирование текста */
 }
 
-    nav ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: inline-block;
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0; /* Добавляем отступ снизу */
+    display: inline-flex; 
+    justify-content: center; 
+}
+
+/* ... (остальной CSS для навигации) ... */
+
+.logo {
+    font-size: 2.5em; /* Увеличиваем размер логотипа */
+    font-weight: 700; /* Жирный шрифт */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Тень для логотипа */
+    margin-bottom: 20px; /* Отступ снизу */
+    color: white; /* Белый цвет логотипа */
+}
+
+
+header::before { /* Псевдоэлемент для фона */
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("header-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2; /* Уменьшаем прозрачность */
+    z-index: -1;
+    filter: blur(8px); /* Увеличиваем размытие */
+    transform: scale(1.1); /* Небольшое масштабирование для эффекта параллакса */
+
+}
+
+
+
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-flex; /* flex для центрирования */
+    justify-content: center; /* центрирование */
+}
+
+nav li {
+    margin: 0 20px; /* Больше пространства между элементами */
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #336633;
+    font-weight: bold;
+    font-size: 1.2em;
+    transition: transform 0.3s ease, text-shadow 0.3s ease; /* Добавляем transition для text-shadow */
+}
+
+    .nav-link:hover {
+        text-decoration: underline;
+        transform: scale(1.1);
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Менее агрессивная тень */
     }
 
-    nav li {
-        display: inline;
-        margin: 0 10px;
-    }
+.logo {
+    font-size: 2em;
+    margin: 20px 0; /* Добавляем отступы */
+}
 
-    nav a {
-        text-decoration: none;
-        color: #336633;
-        font-weight: bold;
-    }
-
-main {
+main.content {
+    display: none; /* По умолчанию скрываем все main */
     flex: 1;
-    display: flex;
-    flex-direction: column; /* Выравнивание по вертикали */
     justify-content: center;
     align-items: center;
     padding: 20px;
 }
 
-.container {
-    background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный белый */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.counter-box {
-    font-size: 3em;
-    margin-bottom: 20px;
-    color: #336633;
-}
+    main.content.active {
+        display: flex; /* Показываем активный main */
+    }
 
 #click-counter {
+    font-size: 4em; /* Уменьшаем размер */
     font-weight: bold;
-    position: relative;
-    top: 0;
-    font-size: 100px;
+    margin-bottom: 20px;
 }
 
 #click-image {
     width: 200px;
     cursor: pointer;
-    border-radius: 1000px;
-    box-shadow: 0 8px #99cc99;
-    transition: all 0.2s ease;
-    position: relative;
+    border-radius: 50%; /* Круглая кнопка */
+    box-shadow: 0 5px #669966; /* Более светлая тень */
+    transition: all 0.1s ease;
 }
+
     #click-image:active {
-        transform: translateY(8px);
-        box-shadow: 0 0 #99cc99;
+        transform: translateY(5px); /* Меньше смещение */
+        box-shadow: 0 2px #669966;
     }
 
-
-.upgrades {
-    margin-top: 20px;
+.promo-module {
+    display: flex;
+    flex-direction: column; /* Вертикальное расположение элементов */
+    align-items: center;
+    width: 50%; /* Ограничиваем ширину */
+    margin: 20px auto; /* Центрируем по горизонтали */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный белый */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-
-footer {
-    background-color: #99cc99;
-    padding: 10px 0;
-    text-align: center;
-}
 .s {
-    font-weight: bold;
-    position: relative;
-    top: 0;
-    font-size: 20px;
+    font-size: 1.5em;
+    margin-bottom: 10px;
 }
-.f {
-    transition: transform 0.3s ease;
 
+#promoStatus {
+    margin-top: 10px;
 }
-    .f:hover {
-        text-decoration: underline;
-        transform: scale(1.2);
-        text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+
+input[type="text"], button {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+}
+
+button {
+    background-color: #99cc99;
+    color: #336633;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    button:hover {
+        background-color: #669966;
     }
-
-
-
-
